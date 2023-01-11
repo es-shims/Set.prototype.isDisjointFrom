@@ -9,8 +9,10 @@ var $Set = require('es-set/polyfill')();
 var isNativeSet = typeof Set === 'function' && $Set === Set;
 
 var Call = require('es-abstract/2022/Call');
+var IteratorClose = require('es-abstract/2022/IteratorClose');
 var IteratorStep = require('es-abstract/2022/IteratorStep');
 var IteratorValue = require('es-abstract/2022/IteratorValue');
+var NormalCompletion = require('es-abstract/2022/NormalCompletion');
 var ToBoolean = require('es-abstract/2022/ToBoolean');
 
 var gOPD = require('es-abstract/helpers/getOwnPropertyDescriptor');
@@ -69,6 +71,7 @@ module.exports = function isDisjointFrom(other) {
 				var nextValue = IteratorValue(next); // step 6.c.ii.1
 				// if (SetDataHas(O.[[SetData]], nextValue)) { // step 6.c.ii.2
 				if ($setHas(O, nextValue)) {
+					IteratorClose(keysIter['[[Iterator]]'], NormalCompletion());
 					return false;
 				}
 			}

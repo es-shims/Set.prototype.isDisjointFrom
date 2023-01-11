@@ -12,8 +12,10 @@
 				"GetIntrinsic",
 				"GetKeysIterator",
 				"GetSetRecord",
+				"IteratorClose",
 				"IteratorStep",
 				"IteratorValue",
+				"NormalCompletion",
 				"ToBoolean",
 
 				// GetSetRecord
