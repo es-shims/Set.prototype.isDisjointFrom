@@ -6,8 +6,6 @@ var $TypeError = GetIntrinsic('%TypeError%');
 
 var $Set = require('es-set/polyfill')();
 
-var isNativeSet = typeof Set === 'function' && $Set === Set;
-
 var Call = require('es-abstract/2022/Call');
 var IteratorClose = require('es-abstract/2022/IteratorClose');
 var IteratorStep = require('es-abstract/2022/IteratorStep');
@@ -22,17 +20,47 @@ var GetSetRecord = require('./aos/GetSetRecord');
 
 var isSet = require('is-set');
 
-var callBind = isNativeSet || require('call-bind'); // eslint-disable-line global-require
-var callBound = isNativeSet && require('call-bind/callBound'); // eslint-disable-line global-require
+var callBind = require('call-bind');
+var callBound = require('call-bind/callBound');
 
-var $setForEach = isNativeSet ? callBound('Set.prototype.forEach') : callBind($Set.prototype.forEach);
-var $setHas = isNativeSet ? callBound('Set.prototype.has') : callBind($Set.prototype.has);
-var $setSize = isNativeSet ? callBound('Set.prototype.size') : gOPD ? callBind(gOPD($Set.prototype, 'size').get) : function setSize(set) {
+var $nativeSetForEach = callBound('Set.prototype.forEach', true);
+var $polyfillSetForEach = callBind($Set.prototype.forEach);
+var $setForEach = function (set, callback) {
+	if ($nativeSetForEach) {
+		try {
+			return $nativeSetForEach(set, callback);
+		} catch (e) { /**/ }
+	}
+	return $polyfillSetForEach(set, callback);
+};
+
+var $nativeSetHas = callBound('Set.prototype.has', true);
+var $polyfillSetHas = callBind($Set.prototype.has);
+var $setHas = function (set, key) {
+	if ($nativeSetHas) {
+		try {
+			return $nativeSetHas(set, key);
+		} catch (e) { /**/ }
+	}
+	return $polyfillSetHas(set, key);
+};
+
+var $nativeSetSize = callBound('Set.prototype.size', true);
+var $polyfillSetSize = gOPD ? callBind(gOPD($Set.prototype, 'size').get) : null;
+var legacySetSize = function setSize(set) {
 	var count = 0;
 	$setForEach(set, function () {
 		count += 1;
 	});
 	return count;
+};
+var setSize = function (S) {
+	if ($nativeSetSize) {
+		try {
+			return $nativeSetSize(S);
+		} catch (e) { /**/ }
+	}
+	return $polyfillSetSize ? $polyfillSetSize(S) : legacySetSize(S);
 };
 
 module.exports = function isDisjointFrom(other) {
@@ -45,7 +73,7 @@ module.exports = function isDisjointFrom(other) {
 
 	var otherRec = GetSetRecord(other); // step 3
 
-	var thisSize = $setSize(O); // step 4
+	var thisSize = setSize(O); // step 4
 
 	if (thisSize <= otherRec['[[Size]]']) { // step 5
 		try {
