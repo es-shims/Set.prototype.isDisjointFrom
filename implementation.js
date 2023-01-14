@@ -22,6 +22,7 @@ var isSet = require('is-set');
 
 var callBind = require('call-bind');
 var callBound = require('call-bind/callBound');
+var iterate = require('iterate-value');
 
 var $nativeSetForEach = callBound('Set.prototype.forEach', true);
 var $polyfillSetForEach = callBind($Set.prototype.forEach);
@@ -31,7 +32,11 @@ var $setForEach = function (set, callback) {
 			return $nativeSetForEach(set, callback);
 		} catch (e) { /**/ }
 	}
-	return $polyfillSetForEach(set, callback);
+	try {
+		return $polyfillSetForEach(set, callback);
+	} catch (e) { /**/ }
+	iterate(set, callback);
+	return void undefined;
 };
 
 var $nativeSetHas = callBound('Set.prototype.has', true);
