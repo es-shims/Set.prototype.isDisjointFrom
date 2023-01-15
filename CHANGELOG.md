@@ -5,6 +5,15 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/)
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [v1.0.2](https://github.com/es-shims/Set.prototype.isDisjointFrom/compare/v1.0.1...v1.0.2) - 2023-01-14
+
+### Commits
+
+- [Refactor] update `es-set`; use `es-set/tools` [`e33e822`](https://github.com/es-shims/Set.prototype.isDisjointFrom/commit/e33e82223f5e1dddc36f22b5ad2b85232fe6f2d3)
+- [Fix] properly handle StopIteration envs, like FF 42 [`a046da5`](https://github.com/es-shims/Set.prototype.isDisjointFrom/commit/a046da59547e2a69787da6cdbf28b5429d7b4a35)
+- [Deps] update `es-set` [`3617eaa`](https://github.com/es-shims/Set.prototype.isDisjointFrom/commit/3617eaa710661c8e39fe9bc87a5a8ba81669b7fe)
+- [Dev Deps] update `object-inspect` [`4d3bb22`](https://github.com/es-shims/Set.prototype.isDisjointFrom/commit/4d3bb22a6ff85d6384a3aa61944778b212ef2351)
+
 ## [v1.0.1](https://github.com/es-shims/Set.prototype.isDisjointFrom/compare/v1.0.0...v1.0.1) - 2023-01-11
 
 ### Commits
