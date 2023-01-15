@@ -13,60 +13,15 @@ var IteratorValue = require('es-abstract/2022/IteratorValue');
 var NormalCompletion = require('es-abstract/2022/NormalCompletion');
 var ToBoolean = require('es-abstract/2022/ToBoolean');
 
-var gOPD = require('es-abstract/helpers/getOwnPropertyDescriptor');
-
 var GetKeysIterator = require('./aos/GetKeysIterator');
 var GetSetRecord = require('./aos/GetSetRecord');
 
 var isSet = require('is-set');
 
-var callBind = require('call-bind');
-var callBound = require('call-bind/callBound');
-var iterate = require('iterate-value');
-
-var $nativeSetForEach = callBound('Set.prototype.forEach', true);
-var $polyfillSetForEach = callBind($Set.prototype.forEach);
-var $setForEach = function (set, callback) {
-	if ($nativeSetForEach) {
-		try {
-			return $nativeSetForEach(set, callback);
-		} catch (e) { /**/ }
-	}
-	try {
-		return $polyfillSetForEach(set, callback);
-	} catch (e) { /**/ }
-	iterate(set, callback);
-	return void undefined;
-};
-
-var $nativeSetHas = callBound('Set.prototype.has', true);
-var $polyfillSetHas = callBind($Set.prototype.has);
-var $setHas = function (set, key) {
-	if ($nativeSetHas) {
-		try {
-			return $nativeSetHas(set, key);
-		} catch (e) { /**/ }
-	}
-	return $polyfillSetHas(set, key);
-};
-
-var $nativeSetSize = callBound('Set.prototype.size', true);
-var $polyfillSetSize = gOPD ? callBind(gOPD($Set.prototype, 'size').get) : null;
-var legacySetSize = function setSize(set) {
-	var count = 0;
-	$setForEach(set, function () {
-		count += 1;
-	});
-	return count;
-};
-var setSize = function (S) {
-	if ($nativeSetSize) {
-		try {
-			return $nativeSetSize(S);
-		} catch (e) { /**/ }
-	}
-	return $polyfillSetSize ? $polyfillSetSize(S) : legacySetSize(S);
-};
+var tools = require('es-set/tools');
+var $setForEach = tools.forEach;
+var $setHas = tools.has;
+var setSize = tools.size;
 
 module.exports = function isDisjointFrom(other) {
 	var O = this; // step 1
