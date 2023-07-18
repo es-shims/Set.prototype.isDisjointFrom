@@ -7,14 +7,13 @@ var $TypeError = GetIntrinsic('%TypeError%');
 var $Set = require('es-set/polyfill')();
 
 var Call = require('es-abstract/2023/Call');
+var GetIteratorFromMethod = require('es-abstract/2023/GetIteratorFromMethod');
+var GetSetRecord = require('./aos/GetSetRecord');
 var IteratorClose = require('es-abstract/2023/IteratorClose');
 var IteratorStep = require('es-abstract/2023/IteratorStep');
 var IteratorValue = require('es-abstract/2023/IteratorValue');
 var NormalCompletion = require('es-abstract/2023/NormalCompletion');
 var ToBoolean = require('es-abstract/2023/ToBoolean');
-
-var GetKeysIterator = require('./aos/GetKeysIterator');
-var GetSetRecord = require('./aos/GetSetRecord');
 
 var isSet = require('is-set');
 
@@ -51,15 +50,15 @@ module.exports = function isDisjointFrom(other) {
 			throw e;
 		}
 	} else { // step 6
-		var keysIter = GetKeysIterator(otherRec); // step 6.a
+		var keysIter = GetIteratorFromMethod(otherRec['[[Set]]'], otherRec['[[Keys]]']); // step 6.a
 		var next = true; // step 6.b
 		while (next) { // step 6.c
-			next = IteratorStep(keysIter['[[Iterator]]']); // step 6.c.i
+			next = IteratorStep(keysIter); // step 6.c.i
 			if (next) { // step 6.c.ii
 				var nextValue = IteratorValue(next); // step 6.c.ii.1
 				// if (SetDataHas(O.[[SetData]], nextValue)) { // step 6.c.ii.2
 				if ($setHas(O, nextValue)) {
-					IteratorClose(keysIter['[[Iterator]]'], NormalCompletion());
+					IteratorClose(keysIter, NormalCompletion());
 					return false;
 				}
 			}
