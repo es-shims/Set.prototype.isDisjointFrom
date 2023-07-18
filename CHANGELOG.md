@@ -5,6 +5,15 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/)
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [v1.1.0](https://github.com/es-shims/Set.prototype.isDisjointFrom/compare/v1.0.2...v1.1.0) - 2023-07-18
+
+### Commits
+
+- [patch] remove GetKeysIterator and its callable check [`fd7dbd3`](https://github.com/es-shims/Set.prototype.isDisjointFrom/commit/fd7dbd3dde968596953cd0453e40ff544ed10a97)
+- [Deps] update `define-properties`, `es-abstract`, `get-intrinsic` [`0b607b1`](https://github.com/es-shims/Set.prototype.isDisjointFrom/commit/0b607b19e71015825e14baf84b9b0f0e41ab6983)
+- [patch] throw on negative set sizes [`8a1abdc`](https://github.com/es-shims/Set.prototype.isDisjointFrom/commit/8a1abdca8777cf4df3a27d12f0f623937c85dde6)
+- [Dev Deps] update `@es-shims/api`, `@ljharb/eslint-config`, `aud`, `es6-shim`, `tape` [`a535197`](https://github.com/es-shims/Set.prototype.isDisjointFrom/commit/a535197b7acaff39d0da2158d58c27f549bc0d15)
+
 ## [v1.0.2](https://github.com/es-shims/Set.prototype.isDisjointFrom/compare/v1.0.1...v1.0.2) - 2023-01-14
 
 ### Commits
