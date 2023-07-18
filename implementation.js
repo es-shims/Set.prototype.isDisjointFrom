@@ -6,12 +6,12 @@ var $TypeError = GetIntrinsic('%TypeError%');
 
 var $Set = require('es-set/polyfill')();
 
-var Call = require('es-abstract/2022/Call');
-var IteratorClose = require('es-abstract/2022/IteratorClose');
-var IteratorStep = require('es-abstract/2022/IteratorStep');
-var IteratorValue = require('es-abstract/2022/IteratorValue');
-var NormalCompletion = require('es-abstract/2022/NormalCompletion');
-var ToBoolean = require('es-abstract/2022/ToBoolean');
+var Call = require('es-abstract/2023/Call');
+var IteratorClose = require('es-abstract/2023/IteratorClose');
+var IteratorStep = require('es-abstract/2023/IteratorStep');
+var IteratorValue = require('es-abstract/2023/IteratorValue');
+var NormalCompletion = require('es-abstract/2023/NormalCompletion');
+var ToBoolean = require('es-abstract/2023/ToBoolean');
 
 var GetKeysIterator = require('./aos/GetKeysIterator');
 var GetSetRecord = require('./aos/GetSetRecord');
