@@ -37,15 +37,20 @@ module.exports = function isDisjointFrom(other) {
 	if (thisSize <= otherRec['[[Size]]']) { // step 5
 		try {
 			$setForEach(O, function (e) {
-				var inOther = ToBoolean(Call(otherRec['[[Has]]'], otherRec['[[Set]]'], [e])); // step 6.a
-				if (inOther) {
-					// eslint-disable-next-line no-throw-literal
-					throw false; // step 5.a.2, kinda
+				var index = 0; // step 5.a
+				if (index < thisSize) { // step 5.a.i
+					index += 1; // step 5.a.ii
+					var inOther = ToBoolean(Call(otherRec['[[Has]]'], otherRec['[[Set]]'], [e])); // step 5.b.iii.1
+					if (inOther) {
+						// eslint-disable-next-line no-throw-literal
+						throw false; // step 5.b.iii.2, kinda
+					}
+					thisSize += setSize(O); // step 5.b.iii.4
 				}
 			});
 		} catch (e) {
 			if (e === false) {
-				return false; // step 5.a.2, the rest
+				return false; // step 5.b.iii.2, the rest
 			}
 			throw e;
 		}
@@ -58,8 +63,8 @@ module.exports = function isDisjointFrom(other) {
 				var nextValue = IteratorValue(next); // step 6.c.ii.1
 				// if (SetDataHas(O.[[SetData]], nextValue)) { // step 6.c.ii.2
 				if ($setHas(O, nextValue)) {
-					IteratorClose(keysIter, NormalCompletion());
-					return false;
+					IteratorClose(keysIter, NormalCompletion()); // step 6.c.ii.2.a
+					return false; // step 6.c.ii.2.b
 				}
 			}
 		}
