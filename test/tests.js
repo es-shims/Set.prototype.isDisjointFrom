@@ -5,6 +5,7 @@ var forEach = require('for-each');
 var v = require('es-value-fixtures');
 var debug = require('object-inspect');
 var $Map = require('es-map/polyfill')();
+var getIterator = require('es-get-iterator');
 
 module.exports = function (isDisjointFrom, t) {
 	t.test('throws on non-set receivers', function (st) {
@@ -183,7 +184,7 @@ module.exports = function (isDisjointFrom, t) {
 			size: 2,
 			has: undefined,
 			keys: function () {
-				return [2, 3];
+				return getIterator([2, 3]);
 			}
 		};
 		st['throws'](
@@ -248,7 +249,7 @@ module.exports = function (isDisjointFrom, t) {
 			size: undefined,
 			has: function () {},
 			keys: function () {
-				return [2, 3];
+				return getIterator([2, 3]);
 			}
 		};
 
