@@ -5,6 +5,18 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/)
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [v1.1.1](https://github.com/es-shims/Set.prototype.isDisjointFrom/compare/v1.1.0...v1.1.1) - 2023-12-18
+
+### Commits
+
+- [Tests] increase coverage [`0aebafc`](https://github.com/es-shims/Set.prototype.isDisjointFrom/commit/0aebafcc68460e5d9d92f6b5e9f1e6d80b340af0)
+- [Refactor] more closely match the spec [`6482da1`](https://github.com/es-shims/Set.prototype.isDisjointFrom/commit/6482da1b9753036f41400644982c6d7b42552887)
+- [Deps] update `call-bind`, `define-properties`, `es-abstract`, `get-intrinsic` [`3f913f6`](https://github.com/es-shims/Set.prototype.isDisjointFrom/commit/3f913f689b0909b02cb82e435f1acb910f4faa6d)
+- [Dev Deps] update `aud`, `npmignore`, `object-inspect`, `tape` [`e0deadc`](https://github.com/es-shims/Set.prototype.isDisjointFrom/commit/e0deadc0289c3d68e5b4372d8030baf361b72be0)
+- [Tests] increase coverage [`d520eb5`](https://github.com/es-shims/Set.prototype.isDisjointFrom/commit/d520eb54f15d6febb573af29cc4d5792441ef5ee)
+- [Deps] update `es-set` [`a3677d6`](https://github.com/es-shims/Set.prototype.isDisjointFrom/commit/a3677d6cda023269e94463500eb1e9e5b58a6cf6)
+- [Dev Deps] update `tape` [`db4010a`](https://github.com/es-shims/Set.prototype.isDisjointFrom/commit/db4010a51431f3b941084b414f419c075d5dc549)
+
 ## [v1.1.0](https://github.com/es-shims/Set.prototype.isDisjointFrom/compare/v1.0.2...v1.1.0) - 2023-07-18
 
 ### Commits
