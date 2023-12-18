@@ -278,5 +278,7 @@ module.exports = function (isDisjointFrom, t) {
 		st.end();
 	});
 
+	t.equal(isDisjointFrom(new $Set([0]), new $Set([-0])), false, 'Set(0) is not disjoint from Set(-0)');
+
 	return t.comment('tests completed');
 };
