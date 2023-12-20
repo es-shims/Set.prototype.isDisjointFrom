@@ -281,5 +281,24 @@ module.exports = function (isDisjointFrom, t) {
 
 	t.equal(isDisjointFrom(new $Set([0]), new $Set([-0])), false, 'Set(0) is not disjoint from Set(-0)');
 
+	t.test('test262: test/built-ins/Set/prototype/isDisjointFrom/converts-negative-zero', function (st) {
+		var setlikeWithMinusZero = {
+			size: 1,
+			has: function () {
+				throw new EvalError('Set.prototype.isDisjointFrom should not call its argument’s has method when this.size > arg.size');
+			},
+			keys: function () {
+				// we use an array here because the Set constructor would normalize away -0
+				return getIterator([-0]);
+			}
+		};
+
+		var s1 = new $Set([+0, 1]);
+
+		st.equal(isDisjointFrom(s1, setlikeWithMinusZero), false);
+
+		st.end();
+	});
+
 	return t.comment('tests completed');
 };
