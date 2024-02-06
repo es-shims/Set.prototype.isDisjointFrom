@@ -16,6 +16,7 @@
 				"IteratorStep",
 				"IteratorValue",
 				"NormalCompletion",
+				"SetDataSize",
 				"ToBoolean",
 
 				// GetSetRecord

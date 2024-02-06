@@ -11,6 +11,7 @@ var IteratorClose = require('es-abstract/2023/IteratorClose');
 var IteratorStep = require('es-abstract/2023/IteratorStep');
 var IteratorValue = require('es-abstract/2023/IteratorValue');
 var NormalCompletion = require('es-abstract/2023/NormalCompletion');
+var SetDataSize = require('./aos/SetDataSize');
 var ToBoolean = require('es-abstract/2023/ToBoolean');
 
 var isSet = require('is-set');
@@ -18,7 +19,7 @@ var isSet = require('is-set');
 var tools = require('es-set/tools');
 var $setForEach = tools.forEach;
 var $setHas = tools.has;
-var setSize = tools.size;
+var $setSize = tools.size;
 
 module.exports = function isDisjointFrom(other) {
 	var O = this; // step 1
@@ -30,7 +31,7 @@ module.exports = function isDisjointFrom(other) {
 
 	var otherRec = GetSetRecord(other); // step 3
 
-	var thisSize = setSize(O); // step 4
+	var thisSize = SetDataSize(O); // step 4
 
 	if (thisSize <= otherRec['[[Size]]']) { // step 5
 		try {
@@ -43,7 +44,7 @@ module.exports = function isDisjointFrom(other) {
 						// eslint-disable-next-line no-throw-literal
 						throw false; // step 5.b.iii.2, kinda
 					}
-					thisSize += setSize(O); // step 5.b.iii.4
+					thisSize += $setSize(O); // step 5.b.iii.4
 				}
 			});
 		} catch (e) {
