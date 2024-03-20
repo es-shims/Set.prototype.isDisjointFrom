@@ -4,15 +4,15 @@ var $TypeError = require('es-errors/type');
 
 var $Set = require('es-set/polyfill')();
 
-var Call = require('es-abstract/2023/Call');
-var GetIteratorFromMethod = require('es-abstract/2023/GetIteratorFromMethod');
+var Call = require('es-abstract/2024/Call');
+var GetIteratorFromMethod = require('es-abstract/2024/GetIteratorFromMethod');
 var GetSetRecord = require('./aos/GetSetRecord');
-var IteratorClose = require('es-abstract/2023/IteratorClose');
-var IteratorStep = require('es-abstract/2023/IteratorStep');
-var IteratorValue = require('es-abstract/2023/IteratorValue');
-var NormalCompletion = require('es-abstract/2023/NormalCompletion');
+var IteratorClose = require('es-abstract/2024/IteratorClose');
+var IteratorStep = require('es-abstract/2024/IteratorStep');
+var IteratorValue = require('es-abstract/2024/IteratorValue');
+var NormalCompletion = require('es-abstract/2024/NormalCompletion');
 var SetDataSize = require('./aos/SetDataSize');
-var ToBoolean = require('es-abstract/2023/ToBoolean');
+var ToBoolean = require('es-abstract/2024/ToBoolean');
 
 var isSet = require('is-set');
 
