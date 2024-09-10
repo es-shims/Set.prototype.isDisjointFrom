@@ -37,7 +37,7 @@ module.exports = function isDisjointFrom(other) {
 				var index = 0; // step 5.a
 				if (index < thisSize) { // step 5.a.i
 					index += 1; // step 5.a.ii
-					var inOther = ToBoolean(Call(otherRec['[[Has]]'], otherRec['[[Set]]'], [e])); // step 5.b.iii.1
+					var inOther = ToBoolean(Call(otherRec['[[Has]]'], otherRec['[[SetObject]]'], [e])); // step 5.b.iii.1
 					if (inOther) {
 						// eslint-disable-next-line no-throw-literal
 						throw false; // step 5.b.iii.2, kinda
@@ -52,7 +52,7 @@ module.exports = function isDisjointFrom(other) {
 			throw e;
 		}
 	} else { // step 6
-		var keysIter = GetIteratorFromMethod(otherRec['[[Set]]'], otherRec['[[Keys]]']); // step 6.a
+		var keysIter = GetIteratorFromMethod(otherRec['[[SetObject]]'], otherRec['[[Keys]]']); // step 6.a
 		var next; // step 6.b
 		while (!keysIter['[[Done]]']) { // step 6.c
 			next = IteratorStepValue(keysIter); // step 6.c.i
