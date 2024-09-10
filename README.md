@@ -35,6 +35,9 @@ assert.equal(set2.isDisjointFrom(set3), true);
 assert.equal(set3.isDisjointFrom(set2), true);
 ```
 
+## Compatibility
+node v22 and equivalent versions of Chrome have Set isDisjointFrom, but has a bug with set-like arguments with non-SMI integer sizes.
+
 ## Tests
 Simply clone the repo, `npm install`, and run `npm test`
 
