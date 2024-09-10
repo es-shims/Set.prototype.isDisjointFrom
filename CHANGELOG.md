@@ -5,6 +5,16 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/)
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [v1.1.5](https://github.com/es-shims/Set.prototype.isDisjointFrom/compare/v1.1.4...v1.1.5) - 2024-09-10
+
+### Commits
+
+- [Fix] handle chrome/v8 bugs [`0b0b430`](https://github.com/es-shims/Set.prototype.isDisjointFrom/commit/0b0b430097d5e0da40eae381e50c4d9ab0b1f407)
+- [Dev Deps] update `@es-shims/api`, `@ljharb/eslint-config`, `object-inspect`, `tape` [`d9c8f69`](https://github.com/es-shims/Set.prototype.isDisjointFrom/commit/d9c8f69442f0202a701ec70655a61572d4353ce1)
+- [Refactor] change internal slot name [`a8291f4`](https://github.com/es-shims/Set.prototype.isDisjointFrom/commit/a8291f4ddf00bba14700fbf6518d4a8f6f06e284)
+- [Tests] replace `aud` with `npm audit` [`64c89f7`](https://github.com/es-shims/Set.prototype.isDisjointFrom/commit/64c89f7890ad729c2f40493d79e8066e13fa43e0)
+- [Dev Deps] add missing peer dep [`67fa3e5`](https://github.com/es-shims/Set.prototype.isDisjointFrom/commit/67fa3e53659b2437c35fc76f7beb1ca1c747a3db)
+
 ## [v1.1.4](https://github.com/es-shims/Set.prototype.isDisjointFrom/compare/v1.1.3...v1.1.4) - 2024-04-06
 
 ### Commits
